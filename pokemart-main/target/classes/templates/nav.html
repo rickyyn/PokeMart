@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:fragment="nav">
+    <div class="fixed top-0 left-0 w-full z-50 pt-6 px-4 flex justify-center">
+        <nav class="bg-white/90 backdrop-blur-md rounded-full shadow-2xl px-8 py-3 w-full max-w-7xl flex items-center justify-between border border-white/50">
+
+            <a href="/" class="flex items-center gap-2">
+                <div><img src="/img/logo-pokemart.png" alt="logo" class="w-8"></div>
+                <span class="text-xl font-extrabold tracking-tight text-[#1B3B78]">POKé <span class="text-[#1B3B78]">MART</span></span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                <a href="/" class="text-[#1B3B78] font-semibold">Home</a>
+                <a href="/consumirApi" class="hover:text-[#1B3B78] transition-colors">Itens</a>
+                <a href="/contato" class="hover:text-[#1B3B78] transition-colors">Contato</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+
+                <div th:if="${session.logado != null}" class="flex items-center gap-3">
+                    <span class="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        <span th:text="${session.logado.nome}">User</span>
+                    </span>
+                    <a href="/logout" class="text-sm text-red-500 hover:text-red-700 font-semibold">Sair</a>
+                </div>
+
+                <div th:unless="${session.logado != null}" class="flex gap-2">
+                    <a href="/login" class="text-slate-600 hover:text-[#1B3B78] font-semibold px-4 py-2">Login</a>
+                    <a href="/cadastro" class="bg-[#1B3B78] hover:bg-[#142951] text-white px-5 py-2 rounded-full font-semibold transition shadow-lg">Cadastrar</a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+</nav>
+
+</body>
+</html>

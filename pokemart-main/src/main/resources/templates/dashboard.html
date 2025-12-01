@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt=br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo-pokemart.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { 'sans': ['Poppins', 'sans-serif'] } } }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-no-repeat bg-cover bg-center bg-[url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d7i3cm4-dc9f4577-6b7d-4d59-8b46-a15bf5e84209.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9jYWQ0YjUyZS1mNmIxLTQzMmYtOTAzNS1hNWY0ODUzYmNmMTUvZDdpM2NtNC1kYzlmNDU3Ny02YjdkLTRkNTktOGI0Ni1hMTViZjVlODQyMDkuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.DiVYTkYKxHeWgg4Ly_eljxIWbMccx3rBpp9PhafZtGw')] bg-slate-50 flex items-center justify-center min-h-screen p-4">
+<div class="flex items-center gap-4">
+
+    <div th:replace="/nav"></div>
+
+
+    <div class="justify-center items-center bg-white/90 backdrop-blur-md rounded-3xl p-16">
+
+        <h2 class="text-3xl font-extrabold text-center text-[#1b3b78] mb-12">Dashboard</h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a th:if="${session.logado.staff}" href="/produtos/novo" class="w-full sm:w-auto px-8 py-4 bg-[#1b3b78] hover:bg-[#142951] text-white font-bold rounded-full shadow-lg transition transform hover:-translate-y-1">
+                Novo Item</a>
+            <a th:if="${session.logado != null && session.logado.staff}" href="/consumirApi" class="w-full sm:w-auto px-8 py-4 bg-[#1b3b78] hover:bg-[#142951] text-white font-bold rounded-full shadow-lg transition transform hover:-translate-y-1">
+                Editar Produtos
+            </a>
+            <a th:if="${session.logado != null && session.logado.staff}" href="/listar" class="w-full sm:w-auto px-8 py-4 bg-[#1b3b78] hover:bg-[#142951] text-white font-bold rounded-full shadow-lg transition transform hover:-translate-y-1">
+                Gerenciar Usuarios
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
